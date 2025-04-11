@@ -1,0 +1,40 @@
+USER
+- int id (PK)
+- string first_name
+- string last_name
+- string email
+- string password
+- boolean is_admin
+
+PLACE
+- int id (PK)
+- string title
+- string description
+- float price
+- float latitude
+- float longitude
+- int owner_id (FK → USER.id)
+Relationships:
+- USER owns PLACE
+
+REVIEW
+- int id (PK)
+- string text
+- int rating
+- int user_id (FK → USER.id)
+- int place_id (FK → PLACE.id)
+Relationships:
+- USER writes REVIEW
+- PLACE has REVIEW
+
+AMENITY
+- int id (PK)
+- string name
+
+PLACE_AMENITY
+- int place_id (FK → PLACE.id)
+- int amenity_id (FK → AMENITY.id)
+Relationships:
+- PLACE includes AMENITY
+- AMENITY available_in PLACE
+
