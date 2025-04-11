@@ -1,0 +1,111 @@
+# HBnB - Authentication & Database Integration
+
+Welcome to **Part 3** of the **HBnB Project**!
+
+In this phase, you'll enhance the backend by introducing:
+
+- 🔐 User authentication
+- 🛂 Role-based authorization
+- 🗄️ Persistent storage using **SQLite** and **SQLAlchemy**
+- 🚀 Production readiness with **MySQL**
+
+This step focuses on security, persistence, and scalable backend development.
+
+---
+
+## 🧱 Project Structure
+
+This part builds progressively toward a secure and database-backed backend system.
+
+---
+
+## ✅ Objectives
+
+- Modify the User model to securely store passwords
+- Implement JWT-based authentication
+- Restrict access using role-based authorization
+- Integrate a persistent database using SQLite for development
+- Map entities with SQLAlchemy ORM
+- Configure the application to use MySQL in production
+- Visualize the database schema with Mermaid.js
+
+---
+
+## 🧩 Task Breakdown
+
+### 1. Modify the User Model
+- Use `bcrypt` to hash user passwords
+- Update registration logic to save hashed passwords
+
+### 2. Implement JWT Authentication
+- Add login routes that return JWT tokens
+- Secure endpoints by requiring token authentication
+
+### 3. Add Role-Based Authorization
+- Define user roles (e.g., `admin`, `user`)
+- Restrict sensitive endpoints to authorized roles only
+
+### 4. Integrate SQLite for Development
+- Replace in-memory storage with SQLite
+- Use environment configs to toggle database types
+
+### 5. Use SQLAlchemy ORM
+- Map models: `User`, `Place`, `Review`, `Amenity`
+- Define relationships between entities
+
+### 6. Prepare for MySQL in Production
+- Set up MySQL configuration using SQLAlchemy
+- Switch databases using environment variables
+
+### 7. Visualize Database with Mermaid.js
+- Create an ERD using Mermaid.js
+- Keep schema diagrams updated as the project evolves
+
+---
+
+## 🛠️ Tools & Technologies
+
+- Python
+- Flask
+- SQLAlchemy
+- SQLite / MySQL
+- bcrypt
+- JWT (PyJWT)
+- Mermaid.js
+
+---
+
+## 📈 Example: ER Diagram (Mermaid.js)
+
+```mermaid
+erDiagram
+    USER ||--o{ PLACE : owns
+    USER ||--o{ REVIEW : writes
+    PLACE ||--o{ REVIEW : has
+    PLACE ||--o{ AMENITY : offers
+
+    USER {
+        string id PK
+        string email
+        string password
+    }
+
+    PLACE {
+        string id PK
+        string name
+        string description
+        string user_id FK
+    }
+
+    REVIEW {
+        string id PK
+        string text
+        string user_id FK
+        string place_id FK
+    }
+
+    AMENITY {
+        string id PK
+        string name
+    }
+
