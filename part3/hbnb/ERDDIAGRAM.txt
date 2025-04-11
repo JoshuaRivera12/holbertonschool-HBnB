@@ -1,3 +1,5 @@
+```mermaid
+
 erDiagram
     USER ||--o{ PLACE : owns
     USER ||--o{ REVIEW : writes
