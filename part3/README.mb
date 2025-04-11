@@ -1,81 +1,80 @@
-# HBnB - Authentication & Database Integration
+# HBnB – Authentication & Database Integration
 
 Welcome to **Part 3** of the **HBnB Project**!
 
-In this phase, you'll enhance the backend by introducing:
+In this phase, we’ll enhance the backend by introducing:
 
-- 🔐 User authentication
-- 🛂 Role-based authorization
-- 🗄️ Persistent storage using **SQLite** and **SQLAlchemy**
-- 🚀 Production readiness with **MySQL**
+- 🔐 **User Authentication**
+- 🛂 **Role-Based Access Control**
+- 🗄️ **Persistent Storage** using **SQLite** and **SQLAlchemy**
+- 🚀 **Production-Ready Setup** with **MySQL**
 
-This step focuses on security, persistence, and scalable backend development.
-
----
-
-## 🧱 Project Structure
-
-This part builds progressively toward a secure and database-backed backend system.
+This stage focuses on improving security, enabling persistence, and preparing the backend for scalable deployment.
 
 ---
 
-## ✅ Objectives
+## 🧱 Project Overview
 
-- Modify the User model to securely store passwords
+This part of the project gradually builds a secure, database-driven backend that’s suitable for real-world applications.
+
+---
+
+## ✅ Goals
+
+- Secure password storage in the `User` model using `bcrypt`
 - Implement JWT-based authentication
-- Restrict access using role-based authorization
-- Integrate a persistent database using SQLite for development
-- Map entities with SQLAlchemy ORM
-- Configure the application to use MySQL in production
-- Visualize the database schema with Mermaid.js
+- Restrict access through role-based authorization
+- Use SQLite for development storage
+- Define data models with SQLAlchemy ORM
+- Configure MySQL for production use
+- Visualize the database schema using Mermaid.js
 
 ---
 
-## 🧩 Task Breakdown
+## 🧩 Tasks
 
-### 1. Modify the User Model
-- Use `bcrypt` to hash user passwords
-- Update registration logic to save hashed passwords
+### 1. Enhance the User Model
+- Hash passwords using `bcrypt`
+- Update registration logic to store hashed credentials
 
-### 2. Implement JWT Authentication
-- Add login routes that return JWT tokens
-- Secure endpoints by requiring token authentication
+### 2. Add JWT Authentication
+- Create login routes that issue JWT tokens
+- Protect endpoints by requiring a valid token
 
-### 3. Add Role-Based Authorization
-- Define user roles (e.g., `admin`, `user`)
-- Restrict sensitive endpoints to authorized roles only
+### 3. Implement Role-Based Authorization
+- Define user roles such as `admin` and `user`
+- Restrict sensitive routes based on role permissions
 
-### 4. Integrate SQLite for Development
+### 4. Set Up SQLite for Development
 - Replace in-memory storage with SQLite
-- Use environment configs to toggle database types
+- Use environment variables to toggle between development and production databases
 
-### 5. Use SQLAlchemy ORM
-- Map models: `User`, `Place`, `Review`, `Amenity`
-- Define relationships between entities
+### 5. Use SQLAlchemy for ORM
+- Map and create models: `User`, `Place`, `Review`, `Amenity`
+- Establish relationships between models
 
-### 6. Prepare for MySQL in Production
-- Set up MySQL configuration using SQLAlchemy
-- Switch databases using environment variables
+### 6. Configure MySQL for Production
+- Set up SQLAlchemy to connect to a MySQL database
+- Dynamically switch databases using environment configs
 
-### 7. Visualize Database with Mermaid.js
-- Create an ERD using Mermaid.js
-- Keep schema diagrams updated as the project evolves
+### 7. Visualize with Mermaid.js
+- Design and maintain an Entity Relationship Diagram (ERD)
+- Use Mermaid.js to keep your schema visualization up to date
 
 ---
 
-## 🛠️ Tools & Technologies
+## 🛠️ Technologies Used
 
-- Python
-- Flask
+- Python + Flask
 - SQLAlchemy
 - SQLite / MySQL
 - bcrypt
-- JWT (PyJWT)
+- JWT (via PyJWT)
 - Mermaid.js
 
 ---
 
-## 📈 Example: ER Diagram (Mermaid.js)
+## 📈 Example: Mermaid.js ER Diagram
 
 ```mermaid
 erDiagram
