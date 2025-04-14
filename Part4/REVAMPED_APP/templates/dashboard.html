@@ -1,0 +1,73 @@
+# Create the dashboard.html content with an Easter-friendly design
+dashboard_html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BunnyBnB Dashboard</title>
+    <style>
+        body {
+            background: #fff8f0;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 2rem;
+        }
+        h1 {
+            color: #6a0572;
+        }
+        .nav {
+            background: #ffe0ec;
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        .nav a {
+            margin-right: 1rem;
+            color: #6a0572;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            background: #fdf6f0;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 10px #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="#">🏠 Listings</a>
+        <a href="#">📅 Bookings</a>
+        <a href="#">👤 Profile</a>
+        <a href="/login">🚪 Logout</a>
+    </div>
+    <div class="content">
+        <h1>Welcome to BunnyBnB! 🐰</h1>
+        <p>Start exploring cozy places to stay this Easter season!</p>
+    </div>
+</body>
+</html>
+"""
+
+# Save dashboard.html
+dashboard_path = os.path.join(templates_dir, "dashboard.html")
+with open(dashboard_path, "w") as f:
+    f.write(dashboard_html)
+
+# Add /dashboard route to app.py if not already there
+with open(app_py_path, "r") as f:
+    app_py_content = f.read()
+
+dashboard_route = """
+@app.route('/dashboard', methods=['GET'])
+def show_dashboard():
+    return render_template('dashboard.html')
+"""
+
+if "def show_dashboard()" not in app_py_content:
+    app_py_content += "\n\n" + dashboard_route
+    with open(app_py_path, "w") as f:
+        f.write(app_py_content)
+
+"✅ Created dashboard.html and added /dashboard route."
+

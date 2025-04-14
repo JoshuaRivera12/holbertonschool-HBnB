@@ -252,3 +252,57 @@ def delete_user(user_id):
         return {'error': str(message)}, 404
 
     return "", 204
+
+# Add to: api/users.py
+
+from api import app
+from flask import request, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
+from logic.model.user import User
+from logic.model.logicexceptions import EmailDuplicated
+
+@app.post('/signup')
+def signup():
+    data = request.get_json()
+    email = data.get("email")
+    password = data.get("password")
+    first_name = data.get("first_name")
+    last_name = data.get("last_name")
+
+    if not all([email, password, first_name, last_name]):
+        return jsonify({"error": "Missing required fields"}), 400
+
+    try:
+        hashed_password = generate_password_hash(password)
+        user = User(email=email, first_name=first_name, last_name=last_name, password=hashed_password)
+        DB.save(user)
+        return jsonify({"message": "Account created successfully"}), 201
+    except EmailDuplicated:
+        return jsonify({"error": "Email already registered"}), 409
+
+@app.post('/login')
+def login():
+    data = request.get_json()
+    email = data.get("email")
+    password = data.get("password")
+
+    if not all([email, password]):
+        return jsonify({"error": "Email and password are required"}), 400
+
+    user = DB.get_user_by_email(email)
+    if not user:
+        return jsonify({"error": "Account not found. Please sign up."}), 404
+
+    if not check_password_hash(user.password, password):
+        return jsonify({"error": "Incorrect password"}), 401
+
+    return jsonify({"message": "Login successful", "user_id": user.id}), 200
+
+def get_user_by_email(email):
+    """Fetches a user by email from the database."""
+    users = DB.all("User")
+    for user in users.values():
+        if hasattr(user, 'email') and user.email == email:
+            return user
+    return None
+

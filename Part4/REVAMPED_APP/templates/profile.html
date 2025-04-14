@@ -1,0 +1,96 @@
+# Create profile.html to show user's profile info
+profile_html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Profile - BunnyBnB</title>
+    <style>
+        body {
+            background: #eaf4f4;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+        }
+        h1 {
+            color: #006d77;
+        }
+        .profile-box {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #b8d8d8;
+            width: 400px;
+        }
+        .nav {
+            background: #d0f4de;
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        .nav a {
+            margin-right: 1rem;
+            color: #006d77;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/dashboard">🏠 Dashboard</a>
+        <a href="/listings">🏡 Listings</a>
+        <a href="/bookings">📅 Bookings</a>
+        <a href="/profile">👤 Profile</a>
+        <a href="/login">🚪 Logout</a>
+    </div>
+    <h1>Your Profile 👤</h1>
+    <div class="profile-box" id="profile">
+        <p>Loading your info...</p>
+    </div>
+
+    <script>
+        const userId = localStorage.getItem('user_id');
+        const container = document.getElementById('profile');
+
+        if (!userId) {
+            container.innerHTML = "<p>Please log in to view your profile.</p>";
+        } else {
+            fetch(`/api/users/${userId}`)
+                .then(response => response.json())
+                .then(user => {
+                    container.innerHTML = `
+                        <p><strong>Name:</strong> ${user.first_name} ${user.last_name}</p>
+                        <p><strong>Email:</strong> ${user.email}</p>
+                        <p><strong>ID:</strong> ${user.id}</p>
+                    `;
+                })
+                .catch(() => {
+                    container.innerHTML = "<p>Could not load your profile info.</p>";
+                });
+        }
+    </script>
+</body>
+</html>
+"""
+
+# Save profile.html
+profile_path = os.path.join(templates_dir, "profile.html")
+with open(profile_path, "w") as f:
+    f.write(profile_html)
+
+# Add /profile route to app.py
+with open(app_py_path, "r") as f:
+    app_py_content = f.read()
+
+profile_route = """
+@app.route('/profile', methods=['GET'])
+def show_profile():
+    return render_template('profile.html')
+"""
+
+if "def show_profile()" not in app_py_content:
+    app_py_content += "\n\n" + profile_route
+    with open(app_py_path, "w") as f:
+        f.write(app_py_content)
+
+"✅ Created profile page and added /profile route."
+

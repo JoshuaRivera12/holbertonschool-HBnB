@@ -1,0 +1,89 @@
+# Let's re-check the login.html file and correct any syntax issues in the JavaScript or structure.
+login_html_fixed = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - BunnyBnB</title>
+    <style>
+        body {
+            background: #fdf6f0;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff0f6;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 20px #ffe0ec;
+            width: 300px;
+            text-align: center;
+        }
+        input {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        button {
+            background-color: #ffb3c6;
+            border: none;
+            padding: 0.7rem;
+            color: white;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .link {
+            margin-top: 1rem;
+            display: block;
+            color: #6a0572;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🐰 BunnyBnB Login</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <a href="/signup" class="link">Don't have an account? Sign up 🐣</a>
+        <p id="msg"></p>
+    </div>
+    <script>
+        function login() {
+            fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.message && data.message.toLowerCase().includes("success")) {
+                    window.location.href = "/dashboard";
+                } else {
+                    document.getElementById('msg').innerText = data.message || data.error;
+                }
+            })
+            .catch(error => {
+                document.getElementById('msg').innerText = "Something went wrong. Please try again.";
+            });
+        }
+    </script>
+</body>
+</html>
+"""
+
+# Overwrite the login.html file with fixed version
+login_path = os.path.join(templates_dir, "login.html")
+with open(login_path, "w") as f:
+    f.write(login_html_fixed)
+
+"✅ Fixed login.html syntax and added redirect to /dashboard on success."
+
