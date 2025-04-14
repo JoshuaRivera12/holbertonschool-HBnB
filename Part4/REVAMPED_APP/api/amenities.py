@@ -11,7 +11,6 @@ from logic import logicexceptions
 from logic.logicfacade import LogicFacade
 import api.validation as val
 
-
 @app.post('/amenities')
 def create_Amenities():
     """
