@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - HBNB</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .signup-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .signup-box img {
+      width: 80px;
+      margin-bottom: 1rem;
+    }
+    .signup-box h2 {
+      color: #FF5A5F;
+      margin-bottom: 1rem;
+    }
+    .signup-box input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .signup-box button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #FF5A5F;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .signup-box a {
+      display: block;
+      margin-top: 1rem;
+      color: #484848;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .error-message {
+      color: red;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-box">
+    <img src="static/images/logo.png" alt="Logo">
+    <h2>Create an Account</h2>
+    <input type="text" id="first_name" placeholder="First Name">
+    <input type="text" id="last_name" placeholder="Last Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="signup()">Sign Up</button>
+    <a href="login.html">Already have an account? Log in</a>
+    <p id="msg" class="error-message"></p>
+  </div>
+
+  <script>
+    function signup() {
+      fetch('/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: document.getElementById('first_name').value,
+          last_name: document.getElementById('last_name').value,
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message && data.message.toLowerCase().includes("success")) {
+          window.location.href = "/dashboard";
+        } else {
+          document.getElementById('msg').innerText = data.message || data.error;
+        }
+      })
+      .catch(() => {
+        document.getElementById('msg').innerText = "Something went wrong. Please try again.";
+      });
+    }
+  </script>
+</body>
+</html>

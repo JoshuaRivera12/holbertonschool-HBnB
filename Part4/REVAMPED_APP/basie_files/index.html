@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBNB Listings</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    header img {
+      height: 40px;
+    }
+    .filter-bar {
+      padding: 1rem 2rem;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    .places {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .place {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .place h2 {
+      color: #FF5A5F;
+      margin: 0 0 0.5rem;
+    }
+    .place .price {
+      font-weight: bold;
+      color: #484848;
+    }
+    .place .icons {
+      margin-top: 0.5rem;
+    }
+    .place .icons img {
+      height: 20px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="static/images/logo.png" alt="HBNB Logo">
+    <h1 style="color: #FF5A5F;">Find Your Stay</h1>
+  </header>
+
+  <div class="filter-bar">
+    <label for="price">Sort by Price:</label>
+    <select id="price" name="price">
+      <option value="asc">Lowest to Highest</option>
+      <option value="desc">Highest to Lowest</option>
+    </select>
+  </div>
+
+  <section class="places">
+    <div class="place">
+      <h2>Modern Loft</h2>
+      <p class="price">$120 / night</p>
+      <p>Located in the heart of downtown with great views.</p>
+      <div class="icons">
+        <img src="static/images/icon_bed.png" alt="Bed"> 2 Beds
+        <img src="static/images/icon_bath.png" alt="Bath"> 1 Bath
+        <img src="static/images/icon_wifi.png" alt="WiFi"> WiFi
+      </div>
+    </div>
+    <div class="place">
+      <h2>Cozy Studio</h2>
+      <p class="price">$85 / night</p>
+      <p>Perfect for solo travelers or couples. Quiet neighborhood.</p>
+      <div class="icons">
+        <img src="static/images/icon_bed.png" alt="Bed"> 1 Bed
+        <img src="static/images/icon_bath.png" alt="Bath"> 1 Bath
+        <img src="static/images/icon_wifi.png" alt="WiFi"> WiFi
+      </div>
+    </div>
+    <!-- More listings will be dynamically loaded here -->
+  </section>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
+

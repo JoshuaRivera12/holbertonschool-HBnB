@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Details - HBNB</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    header img {
+      height: 40px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .container h2 {
+      color: #FF5A5F;
+      margin-bottom: 1rem;
+    }
+    .details {
+      margin-bottom: 2rem;
+    }
+    .details p {
+      margin: 0.5rem 0;
+    }
+    .icons img {
+      height: 20px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+    .review-box {
+      margin-top: 2rem;
+    }
+    .review {
+      border-top: 1px solid #eee;
+      padding: 1rem 0;
+    }
+    .review:first-of-type {
+      border-top: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="static/images/logo.png" alt="Logo">
+    <h1 style="color: #FF5A5F;">Place Details</h1>
+  </header>
+
+  <div class="container">
+    <h2>Modern Loft</h2>
+    <div class="details">
+      <p><strong>Price:</strong> $120 / night</p>
+      <p><strong>Location:</strong> Downtown City Center</p>
+      <div class="icons">
+        <img src="static/images/icon_bed.png" alt="Bed"> 2 Beds
+        <img src="static/images/icon_bath.png" alt="Bath"> 1 Bath
+        <img src="static/images/icon_wifi.png" alt="WiFi"> WiFi
+      </div>
+    </div>
+
+    <div class="review-box">
+      <h3>Reviews</h3>
+      <div class="review">
+        <strong>Jane D.</strong>
+        <p>Great location and super clean. Loved the decor!</p>
+      </div>
+      <div class="review">
+        <strong>Mike B.</strong>
+        <p>Awesome host and comfy bed. Would definitely stay again.</p>
+      </div>
+      <!-- More reviews dynamically loaded here -->
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <a href="add_review.html" style="color: #FF5A5F; font-weight: bold; text-decoration: none;">Leave a Review</a>
+    </div>
+  </div>
+</body>
+</html>
+
