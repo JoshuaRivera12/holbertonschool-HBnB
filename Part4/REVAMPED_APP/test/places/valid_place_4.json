@@ -1,0 +1,11 @@
+{
+	"host_id":"",
+	"name":"Casa Family",
+	"description":"Looking for a nice quiet place for family and friends? The master bedroom is furnished with a king size bed and private bathroom. The 2nd and 3rd bedrooms have two bunkbed sets, twin over full, each. Full kitchen with all amenities, open living room, dining room area. Private washer and dryer as well. The property has three pools, all shared, one very close to the apartment. Literally a one minute walk. The other two are still walking distance, but a few buildings down.",
+	"number_of_rooms":3,
+	"number_of_bathrooms":2,
+	"max_guests":10,
+	"price_per_night":200.00,
+	"city_id":"Fajardo",
+	"amenity_ids": []
+}
