@@ -7,4 +7,17 @@ classDiagram
   +ReviewController
 }
 
+  class BusinessLogicLayer {
+  +UserModel
+  +PlaceModel
+  +AmenityModel
+  +ReviewModle
+}
 
+  class PersistenceLayer {
+  +DatabaseAccess
+  +Database
+}
+
+PresentationLayer --> BusinessLagicLayer : Facade Pattern
+BusinessLogicLayer --> PersistenceLayer : Database Operations
