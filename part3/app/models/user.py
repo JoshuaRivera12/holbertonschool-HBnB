@@ -2,7 +2,7 @@
 """User model module for the HBNB application
 """
 from app.models.base_model import BaseModel
-from app import bcrypt, db
+from app.extensions import bcrypt, db
 """User class for representing users in the application
 """
 

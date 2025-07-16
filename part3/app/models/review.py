@@ -4,8 +4,7 @@
 from app.models.base_model import BaseModel
 from app.models.user import User
 from app.models.place import Place
-from app import db
-
+from app.extensions import db
 
 class Review(BaseModel):
     __tablename__ = 'reviews'
