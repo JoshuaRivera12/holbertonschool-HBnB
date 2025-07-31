@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Clone - Place Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icon.png">
+</head>
+<body>
+
+   <header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Airbnb Clone Logo">
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html" class="login-button" id="login-link">Login</a>
+        <button id="logout-button" class="login-button" style="display: none;">Logout</button>
+    </nav>
+</header>
+<main class="place-details-container">
+    <div class="place-details">
+        <img id="place-main-image" src="images/default-place.jpg" alt="Place image" class="place-main-image">
+        <div class="place-info">
+            <h2 id="place-name"></h2>
+            <p><strong>Hosted by:</strong> <span id="place-host"></span></p>
+            <p><strong>Price per night:</strong> $<span id="place-price"></span></p>
+            <p class="description" id="place-description"></p>
+
+            <h3>Amenities</h3>
+            <ul id="amenities-list" class="amenities-list">
+                </ul>
+        </div>
+    </div>
+
+    <div class="reviews-section">
+        <h3>Reviews</h3>
+        <a href="add_review.html" id="add-review-button" class="add-review-button" style="display: none;">Add a Review</a>
+        
+        <div id="reviews-list">
+            </div>
+        
+    </div>
+</main>
+
+    <footer>
+        <p>&copy; 2025 Airbnb Clone. All rights reserved.</p>
+    </footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+/* General body and typography */
+body {
+    font-family: sans-serif; /* You can change this font */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #333;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    height: 40px; /* Adjust as needed */
+}
+
+header nav a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.login-button {
+    padding: 8px 15px;
+    background-color: #ff5a5f; /* A red color */
+    color: white !important;
+    border-radius: 5px;
+}
+
+/* Main content container */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer p {
+	font size: 0.8em;
+	margin: 0;
+}
+
+/* Login Form Specific Styles */
+.login-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form label {
+    font-weight: bold;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-form button {
+    padding: 12px;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.login-form button:hover {
+    background-color: #e04b4f;
+}
+
+/* Sign Up Form Specific Styles */
+/* These styles are the same as the login form, so we can group them */
+.login-form h2, .signup-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-form form, .signup-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form label, .signup-form label {
+    font-weight: bold;
+}
+
+.login-form input, .signup-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-form button, .signup-form button {
+    padding: 12px;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.login-form button:hover, .signup-form button:hover {
+    background-color: #e04b4f;
+}
+
+/* Add to your existing styles.css file */
+.form-switch {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form-switch a {
+    color: #ff5a5f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-switch a:hover {
+    text-decoration: underline;
+}
+
+/* Add to your existing styles.css file */
+
+.place-list-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.place-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px; /* Required margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
+}
+
+.place-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.place-info {
+    padding: 10px; /* Required padding */
+}
+
+.place-info h3 {
+    margin: 0 0 5px;
+    color: #333;
+}
+
+.place-info p {
+    margin: 0 0 10px;
+    color: #777;
+    font-size: 14px;
+}
+
+.details-button {
+    display: inline-block;
+    background-color: #ff5a5f;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.details-button:hover {
+    background-color: #e04b4f;
+}
+
+/* Add to your existing styles.css file */
+
+.place-details-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.place-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.place-main-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.place-info h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+.place-info p {
+    line-height: 1.6;
+}
+
+.place-info .description {
+    font-style: italic;
+    color: #555;
+}
+
+.reviews-section {
+    margin-top: 40px;
+}
+
+.reviews-section h3 {
+    border-bottom: 2px solid #ff5a5f;
+    padding-bottom: 5px;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 20px; /* Required margin */
+    padding: 10px; /* Required padding */
+    background-color: #f9f9f9;
+}
+
+.review-comment {
+    margin-top: 0;
+}
+
+.review-meta {
+    font-size: 0.9em;
+    color: #777;
+    text-align: right;
+    margin-bottom: 0;
+}
+
+.add-review-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #ff5a5f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.add-review-button:hover {
+    background-color: #e04b4f;
+}
+
+/* Add to your existing styles.css file */
+
+.add-review {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-review h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-form label {
+    font-weight: bold;
+}
+
+.review-form select,
+.review-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.review-form textarea {
+    resize: vertical; /* Allows user to resize vertically */
+}
+
+.review-form button {
+    padding: 12px;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.review-form button:hover {
+    background-color: #e04b4f;
+}
+
+/* Add this to your styles.css file */
+.error-message {
+    color: #d9534f;
+    background-color: #f2dede;
+    border: 1px solid #d9534f;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+    display: none; /* Hide by default */
+}
+
+/* Add to your styles.css file */
+#status-message {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    display: none; /* Hidden by default */
+}
+
+.status-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+.status-error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+}
