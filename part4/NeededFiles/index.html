@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airbnb Clone</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="static/images/icon.png">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="static/images/logo.png" alt="Airbnb Clone Logo">
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html" class="login-button" id="login-link">Login</a>
+      <button id="logout-button" class="login-button" style="display: none;">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="places-section">
+      <div id="places" class="places-grid">
+        <!-- Places will be rendered here by scripts.js -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Airbnb Clone. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const placesContainer = document.getElementById('places');
+
+    fetch('http://127.0.0.1:5000/api/v1/places')
+      .then(response => response.json())
+      .then(places => {
+        places.forEach(place => {
+          const placeDiv = document.createElement('div');
+          placeDiv.className = 'place-card';
+
+          placeDiv.innerHTML = `
+            <h3>${place.name}</h3>
+            <div class="place-images">
+              <img src="static/images/place1.jpg" alt="Image 1" class="place-image">
+              <img src="static/images/place2.jpg" alt="Image 2" class="place-image">
+            </div>
+            <p>${place.description || ''}</p>
+            <ul>
+              <li>Rooms: ${place.number_rooms}</li>
+              <li>Bathrooms: ${place.number_bathrooms}</li>
+              <li>Max Guests: ${place.max_guests}</li>
+              <li>Price per Night: $${place.price_per_night}</li>
+            </ul>
+          `;
+          placesContainer.appendChild(placeDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching places:', error);
+        placesContainer.innerHTML = '<p>Failed to load places.</p>';
+      });
+  </script>
+</body>
+</html>
+

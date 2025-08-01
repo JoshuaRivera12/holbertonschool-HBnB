@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up - Airbnb Clone</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="static/images/icon.png" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="static/images/logo.png" alt="Airbnb Clone Logo" />
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html" class="login-button">Login</a>
+    </nav>
+  </header>
+
+  <main class="auth-container">
+    <div class="auth-box">
+      <h2>Create your account with us!</h2>
+      <form id="signup-form">
+        <input type="text" id="first_name" name="first_name" placeholder="First Name" required />
+        <input type="text" id="last_name" name="last_name" placeholder="Last Name" required />
+        <input type="email" id="email" name="email" placeholder="Email" required />
+        <input type="password" id="password" name="password" placeholder="Password" required />
+        <button type="submit">Sign Up</button>
+      </form>
+      <p id="status-message" class="status-message"></p>
+      <p>
+        Already have an account with us? Please <a href="login.html">Log in here</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Airbnb Clone. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const statusMessage = document.getElementById('status-message');
+      statusMessage.textContent = '';
+      statusMessage.className = 'status-message';
+
+      const first_name = document.getElementById('first_name').value.trim();
+      const last_name = document.getElementById('last_name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      // Adjust the URL to your backend signup endpoint
+      const signupUrl = 'http://127.0.0.1:5000/api/v1/auth/signup';
+
+      try {
+        const response = await fetch(signupUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ first_name, last_name, email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Success! Redirect to login page with a success message query param
+          window.location.href = 'login.html?success=1';
+        } else {
+          // Show error message from backend or generic error
+          statusMessage.textContent = data.message || 'Signup failed. Try again.';
+          statusMessage.classList.add('status-error');
+        }
+      } catch (error) {
+        statusMessage.textContent = 'Network error. Please try again later.';
+        statusMessage.classList.add('status-error');
+      }
+    });
+  </script>
+</body>
+</html>
+

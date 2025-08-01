@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Airbnb Clone - Add Review</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="static/images/icon.png" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="static/images/logo.png" alt="Airbnb Clone Logo" />
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html" class="login-button" id="login-link">Login</a>
+      <button id="logout-button" class="login-button" style="display: none;">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="review-container">
+      <h2>Add a Review for <span id="place-name-review">...</span></h2>
+      <form id="review-form">
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating" required>
+          <option value="" disabled selected>⭐ Rate this place</option>
+          <option value="5">⭐⭐⭐⭐⭐</option>
+          <option value="4">⭐⭐⭐⭐☆</option>
+          <option value="3">⭐⭐⭐☆☆</option>
+          <option value="2">⭐⭐☆☆☆</option>
+          <option value="1">⭐☆☆☆☆</option>
+        </select>
+
+        <label for="review-comment">Your Review:</label>
+        <textarea id="review-comment" name="review-comment" rows="8" required></textarea>
+
+        <button type="submit" class="details-button">Submit Review</button>
+      </form>
+
+      <div id="status-message"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Airbnb Clone. All rights reserved.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
+
+<script>
+  // Extract place_id from query string
+  const params = new URLSearchParams(window.location.search);
+  const placeId = params.get("place_id");
+
+  // Fetch place info to display name
+  fetch(`/api/v1/places/${placeId}`)
+    .then(res => res.json())
+    .then(place => {
+      document.getElementById("place-name-review").textContent = place.name;
+    })
+    .catch(() => {
+      document.getElementById("place-name-review").textContent = "Unknown Place";
+    });
+
+  // Handle form submit
+  document.getElementById("review-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const rating = document.getElementById("rating").value;
+    const comment = document.getElementById("review-comment").value;
+
+    fetch(`/api/v1/places/${placeId}/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        rating: parseInt(rating),
+        text: comment
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("status-message").textContent =
+        `Review posted! You rated ${rating} star${rating !== "1" ? "s" : ""}.`;
+      document.getElementById("review-form").reset();
+    })
+    .catch(err => {
+      document.getElementById("status-message").textContent = "Failed to post review.";
+    });
+  });
+</script>
+
+
